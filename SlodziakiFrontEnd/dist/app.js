@@ -63,8 +63,9 @@ app.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, func
     });
 }); });
 require('./controller/authController')(app);
-var authMiddleware = require('./middleware/auth');
-app.use(authMiddleware);
+// const authMiddleware = require('./middleware/auth')
+// app.use(authMiddleware);
 require('./controller/productController')(app);
 require('./controller/orderController')(app);
+require('./controller/sl-deliveryController')(app);
 //# sourceMappingURL=app.js.map
