@@ -6,26 +6,26 @@ const deliveryService = require('../service/sl-deliveryService')
 module.exports=function(app: Application) {
 
 
-    // app.get('/add-delivery-employee', async (req: Request, rest: Response) => {
-    //     rest.render('sl-add-delivery-employee')
-    // })
+    app.get('/employees/delivery/create', async (req: Request, rest: Response) => {
+        rest.render('sl-add-delivery-employee')
+    })
 
 
+    app.post('/employees/delivery/create', async (req: Request, res: Response) => {
+        let data: DeliveryEmployees = req.body
+        let id: Number
+          
 
-    // app.post('/add-delivery-employee', async (req: Request, res: Response) => {
-    //     let data: DeliveryEmployees = req.body
-    //     let id: Number
+        try {
+            id = await deliveryService.createDeliveryEmployee(data)
+            res.redirect('/employees/delivery/' + id)
+        } catch (e) {
+            console.error(e)
+            res.locals.errormessage = e.message
+            res.render('sl-add-delivery-employee', req.body)
+        }
     
-    //     try {
-    //         id = await deliveryService.createDeliveryEmployee(data)
-    //         res.redirect('/delivery/employee/' + id)
-    //     } catch (e) {
-    //         console.error(e)
-    //         res.locals.errormessage = e.message
-    //         res.render('sl-add-delivery-employee', req.body)
-    //     }
-    
-    // })
+    })
 
 
 // app.put('/employees/delivery/:id', async (req, res) => {
@@ -44,11 +44,11 @@ module.exports=function(app: Application) {
 
 ////////
 
-app.get('/employees/delivery', async (req: Request, res: Response) => {
+app.get('/employees/delivery', async (req: Request, res: Response) => { //localhost3000
     let data = [];
 
     try {
-        data = await deliveryService.getAllDeliveryEmployees()
+        data = await deliveryService.getAllDeliveryEmployees() 
     } catch (e){
         console.error(e);
     }

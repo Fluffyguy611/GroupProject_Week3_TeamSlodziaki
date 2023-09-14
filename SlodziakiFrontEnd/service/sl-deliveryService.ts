@@ -6,11 +6,11 @@ const axios = require('axios');
 module.exports.createDeliveryEmployee = async function (DeliveryEmployee: DeliveryEmployees): Promise<number> {
     
     try{
-        const response = await axios.post(`http://localhost:8080/api/employees/delivery/${DeliveryEmployee}` )
+        const response = await axios.post(`http://localhost:8080/api/employees/delivery`, DeliveryEmployee )
         
         return response.data
     } catch (e) {
-        throw new Error('Could not get delivery employees')
+        throw new Error('Could not create delivery employees')
     }
 }
 
@@ -40,7 +40,7 @@ module.exports.getDeliveryEmployeeById = async function( id: number ): Promise<D
 
 module.exports.getAllDeliveryEmployees = async function (): Promise<DeliveryEmployees> {
     try{
-        const response = await axios.get('http://localhost:8080/api/employees/delivery');
+        const response = await axios.get('http://localhost:8080/api/employees/delivery');// 
 
         return response.data
     } catch (e) {
