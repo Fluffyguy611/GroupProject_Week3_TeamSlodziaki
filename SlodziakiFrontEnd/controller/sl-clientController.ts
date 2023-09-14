@@ -10,7 +10,7 @@ module.exports = function(app: Application) {
         let data = [];
 
         try {
-            data = await clientService.getClientsReport()
+            data = await clientService.getClientsReport(req.params.token)
         } catch (e){
             console.error(e)
         }
@@ -22,7 +22,7 @@ module.exports = function(app: Application) {
         let data = [];
 
         try {
-            data = await clientService.getClientHighestValue()
+            data = await clientService.getClientHighestValue(req.params.token)
         } catch (e){
             console.error(e)
         }

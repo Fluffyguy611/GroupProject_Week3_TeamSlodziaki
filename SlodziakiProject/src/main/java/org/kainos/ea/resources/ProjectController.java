@@ -2,6 +2,8 @@ package org.kainos.ea.resources;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.Api;
+import org.checkerframework.checker.units.qual.A;
+import org.kainos.ea.api.AuthService;
 import org.kainos.ea.api.ProjectService;
 import org.kainos.ea.cli.ClientRequestId;
 import org.kainos.ea.cli.ProjectDeliveryEmployeeRequest;
@@ -19,13 +21,25 @@ import java.sql.SQLException;
 public class ProjectController {
 
     private ProjectService projectService = new ProjectService();
+    private AuthService authService = new AuthService();
 
 
     @PUT
     @Path("/project/{projectId}/clients")
     @Produces(MediaType.APPLICATION_JSON)
+    public Response assignClientToProject(@PathParam("projectId") int projectId, @QueryParam("token") String token,
+    ClientRequestId client){
 
-    public Response assignClientToProject(@PathParam("projectId") int projectId, ClientRequestId client){
+        try{
+            if(!authService.isSales(token)){
+                return Response.status(Response.Status.FORBIDDEN).build();
+            }
+        }
+        catch (TokenExpiredException e) {
+            return Response.status(Response.Status.FORBIDDEN).entity(e.getMessage()).build();
+        } catch (FailedToVerifyTokenException e) {
+            return Response.serverError().build();
+        }
 
         try {
             projectService.assignClientToProject(projectId, client);
@@ -63,7 +77,18 @@ public class ProjectController {
     @PUT
     @Path("/project/{projectId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response setProjectAsCompleted(@PathParam("projectId") int projectId){
+    public Response setProjectAsCompleted(@PathParam("projectId") int projectId, @QueryParam("token") String token){
+        try{
+            if(!authService.isManagement(token)){
+                return Response.status(Response.Status.FORBIDDEN).build();
+            }
+        }
+        catch (TokenExpiredException e) {
+            return Response.status(Response.Status.FORBIDDEN).entity(e.getMessage()).build();
+        } catch (FailedToVerifyTokenException e) {
+            return Response.serverError().build();
+        }
+
         try {
             projectService.setProjectAsCompleted(projectId);
 
@@ -82,7 +107,19 @@ public class ProjectController {
     @GET
     @Path("/projects/reports")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getProducts(){
+    public Response getProducts(@QueryParam("token") String token){
+
+        try{
+            if(!authService.isManagement(token)){
+                return Response.status(Response.Status.FORBIDDEN).build();
+            }
+        }
+        catch (TokenExpiredException e) {
+            return Response.status(Response.Status.FORBIDDEN).entity(e.getMessage()).build();
+        } catch (FailedToVerifyTokenException e) {
+            return Response.serverError().build();
+        }
+
         try {
             return Response.ok(projectService.getProjectsReport()).build();
         } catch (FailedToGetEmployeesException e) {

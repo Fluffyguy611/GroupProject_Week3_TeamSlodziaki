@@ -12,7 +12,7 @@ module.exports = function(app: Application) {
         let data = [];
 
         try {
-            data = await projectService.getProjectReport()
+            data = await projectService.getProjectReport(req.params.token, req.session.token)
         } catch (e){
             console.error(e)
         }
@@ -24,7 +24,7 @@ module.exports = function(app: Application) {
         let data = [];
 
         try {
-            data = await projectService.getProjectById(req.params.id)
+            data = await projectService.getProjectById(req.params.id, req.session.token)
         } catch (e){
             console.error(e);
         }
@@ -36,7 +36,7 @@ module.exports = function(app: Application) {
         let data = [];
 
         try {
-            data = await projectService.getProjectById(req.params.id)
+            data = await projectService.getProjectById(req.params.id, req.session.token)
         } catch (e){
             console.error(e);
         }
@@ -48,7 +48,7 @@ module.exports = function(app: Application) {
     app.post('/projects/:id/setCompleted', async (req: Request, res: Response) => {
         let data: Project = req.body
         try {
-            await projectService.setProjectAsCompleted(req.params.id)
+            await projectService.setProjectAsCompleted(req.params.id, req.params.token)
 
             res.redirect('/projects/reports')
         } catch (e){
@@ -66,7 +66,7 @@ module.exports = function(app: Application) {
         let client_data = [];
 
         try {
-            project_data = await projectService.getProjectById(req.params.project_id)
+            project_data = await projectService.getProjectById(req.params.project_id, req.session.token)
             client_data = await clientService.getClients()
         } catch (e){
             console.error(e);
@@ -78,7 +78,7 @@ module.exports = function(app: Application) {
     app.post('/projects/:project_id/clients', async (req: Request, res: Response) => {
         let data: Project = req.body
         try {
-            await projectService.assignClientToProject(req.params.project_id, data)
+            await projectService.assignClientToProject(req.params.project_id, data, req.session.token)
 
             res.redirect('/projects/reports')
         } catch (e){
