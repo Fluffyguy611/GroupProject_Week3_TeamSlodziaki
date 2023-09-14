@@ -44,4 +44,19 @@ public class ClientController {
         }
 
     }
+
+
+    @GET
+    @Path("/clients")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllClients() {
+        try {
+            return Response.ok(clientService.getAllClients()).build();
+        } catch (FailedToGetClientsException e) {
+            System.err.println(e.getMessage());
+
+            return Response.serverError().build();
+        }
+
+    }
 }

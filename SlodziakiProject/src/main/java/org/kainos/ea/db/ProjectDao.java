@@ -1,9 +1,6 @@
 package org.kainos.ea.db;
 
-import org.kainos.ea.cli.Employee;
-import org.kainos.ea.cli.EmployeeRequestName;
-import org.kainos.ea.cli.Project;
-import org.kainos.ea.cli.ProjectReportTechLead;
+import org.kainos.ea.cli.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -60,6 +57,36 @@ public class ProjectDao {
                     rs.getBoolean("IsCompleted"),
                     rs.getInt("ClientId"),
                     rs.getInt("TechleadId")
+            );
+
+        }
+
+        return null;
+    }
+
+
+    public ProjectRequestDetails getProjectDetailsById(int id) throws SQLException {
+        Connection c = databaseConnector.getConnection();
+        String getStatement = "SELECT Project.Id, Project.Name, Value, IsCompleted, ClientId, TechLeadId, Client.Name, Employee.Name" +
+                " FROM `Project` " +
+                "INNER JOIN Client " +
+                "ON Client.Id = Project.ClientId " +
+                "INNER JOIN Employee " +
+                "ON Project.TechLeadId = Employee.Id " +
+                "WHERE Project.Id = " + id + ";";
+        PreparedStatement st = c.prepareStatement(getStatement);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()){
+            return new ProjectRequestDetails(
+                    rs.getInt("Id"),
+                    rs.getString("Name"),
+                    rs.getDouble("Value"),
+                    rs.getBoolean("IsCompleted"),
+                    rs.getInt("ClientId"),
+                    rs.getString("Client.Name"),
+                    rs.getInt("TechLeadId"),
+                    rs.getString("Employee.Name")
             );
 
         }

@@ -42,6 +42,23 @@ public class ProjectController {
         }
     }
 
+    @GET
+    @Path("/projects/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getProjectById(@PathParam("id") int id) {
+        try {
+            return Response.ok(projectService.getProjectById(id)).build();
+        } catch (FailedToGetProjectException e) {
+            System.err.println(e.getMessage());
+
+            return Response.serverError().build();
+        } catch (ProjectDoesNotExistsException e) {
+            System.err.println(e.getMessage());
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        }
+
+    }
+
 
     @PUT
     @Path("/project/{projectId}")

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{ Project.name }}</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container mt-4">
+        <section id="project" class="mt-4">
+           {% if project %}
+           <h4>Project Name:  {{ project.name }}</h4>
+          
+           <form action="/projects/{{project.projectId}}/setCompleted" method="post">
+                <p>Are you sure you want to set the project as completed?</p>
+               <p></p>
+            <button type="submit" class="btn-primary">YES</button>
+        </form>
+        <form action="/projects/{{project.projectId}}" method="get">
+            <p></p>
+        <button type="submit" class="btn-primary">NO</button>
+    </form>
+           {% else %}
+                Could not find project.
+           {% endif %}
+        </section>
+    </main>
+</body>
+</html>

@@ -4,18 +4,18 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ClientRequestId {
-    private int Id;
+    private int clientId;
 
     @JsonCreator
-    public ClientRequestId( @JsonProperty("clientId") int id) {
-        setId(id);
+    public ClientRequestId( @JsonProperty("clientId") int clientId) {
+        setClientId(clientId);
     }
 
-    public int getId() {
-        return Id;
+    public int getClientId() {
+        return clientId;
     }
 
-    public void setId(int id) {
-        Id = id;
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 }

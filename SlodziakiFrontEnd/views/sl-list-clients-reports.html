@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients Reports</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Clients Reports</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container mt-4">
+        <section id="products" class="mt-4">
+            <h2>Clients Reports</h2>
+            {% if clients and clients.length > 0 %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Clients</th>
+                        <th scope="col">Projects</th>
+                        <th scope="col">Sales Representative</th>
+                    </tr>
+                    <tbody>
+                {% for client in clients %}
+                        <tr>
+                            <td>{{ client.client }}</td>
+                            <td>{{ client.projects }}</td>
+                            <td>{{ client.salesRep }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </thead>
+            </table>
+            {% else %}
+                There are no clients.
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>
