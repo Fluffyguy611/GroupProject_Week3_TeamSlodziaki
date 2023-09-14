@@ -1,4 +1,4 @@
-# TikiTakiWebService
+# SlodziakiWebService
 
 How to start the TikiTakiWebService application
 ---
