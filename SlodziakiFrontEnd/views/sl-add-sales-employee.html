@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales team HR Panel</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Add Sales Employee</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container mt-4">
+        <section id="form" class="lg-light py-5">
+            <div class="container">
+                <p>Add Sales Employee Form</p>
+                {% if errormessage %}
+                <div class="alert alert-danger" role="alert">
+                    {{ errormessage }}
+                </div>
+                {% endif %}
+                <form action="/add-sales-employee" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" class="form-control" value="{{ name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary</label>
+                <input type="text" id="salary" name="salary" class="form-control" value="{{ salary }}" required>
+            </div>
+            <div class="form-group">
+                <label for="bank-account-number">Bank account number</label>
+                <input type="text" id="bank-account-number" name="bank-account-number" class="form-control" value="{{ bankAccount }}" required>
+            </div>
+            <div class="form-group">
+                <label for="national-insurance-number">National Insurance Nubmer</label>
+                <input type="text" id="national-insurance-number" name="national-insurance-number" class="form-control" value="{{ insuranceNumber }}" required>
+            </div>
+            <div class="form-group">
+                <label for="commission-rate">Commission Rate</label>
+                <input type="text" id="commission-rate" name="commission-rate" class="form-control" value="{{ commissionRate }}" required>
+            </div>
+            <button type="submit" class="btn-primary">Create employee</button>
+        </form>
+        </div>
+        </section>
+    </main>
+</body>
+</html>

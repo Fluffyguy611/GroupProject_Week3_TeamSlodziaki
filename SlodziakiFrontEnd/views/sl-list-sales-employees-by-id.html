@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales employees</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Select sales employee by Id</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container mt-4">
+        <section id="employees-sales-by-id" class="mt-4">
+            <h2>Sales employee by Id</h2>
+            {% if SalesEmployee %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Salary</th>
+                        <th scope="col">Bank Account Number</th>
+                        <th scope="col">Commission Rate</th>
+                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>{{ SalesEmployee.employeeId }}</td>
+                            <td>{{ SalesEmployee.name }}</td>
+                            <td>{{ SalesEmployee.salary }}</td>
+                            <td>{{ SalesEmployee.bankAccount }}</td>
+                            <td>{{ SalesEmployee.commissionRate }}</td>
+                            <td><a href="/sl-delete-sales-employee/{{ SalesEmployee.employeeId }}">Delete</a></td>
+                        </tr>
+                    </tbody>
+                </thead>
+            </table>
+            {% else %}
+                Selected employee does not exist.
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>
