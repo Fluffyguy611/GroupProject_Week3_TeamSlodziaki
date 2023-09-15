@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import { Product } from './model/product';
 import { Order } from './model/order';
 import { Login } from './model/auth';
+import { DeliveryEmployees } from "./model/sl-delivery";
 
 const express = require('express')
 const app = express()
@@ -35,6 +36,7 @@ declare module "express-session" {
         token: string
         product: Product;
         order: Order;
+        deliveryEmployee: DeliveryEmployees;
     }
 }
 
@@ -48,11 +50,13 @@ app.get('/', async (req: Request, res: Response) => {
 
 require('./controller/authController')(app);
 
-const authMiddleware = require('./middleware/auth')
-app.use(authMiddleware);
+// const authMiddleware = require('./middleware/auth')
+// app.use(authMiddleware);
 
 
 
 require('./controller/productController')(app);
 
 require('./controller/orderController')(app);
+
+require('./controller/sl-deliveryController')(app);

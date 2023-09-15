@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Deliver Employees</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>DeliveryEmployees</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container mt-4">
+        <section id="/employees/delivery" class="mt-4">
+            <h2>All Delivery Employees</h2>
+            {% if DeliveryEmployee and DeliveryEmployee.length > 0 %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Salary</th>
+                        <th scope="col">Bank Account</th>
+                        <th scope="col">Insurance Number</th>
+                    </tr>
+                    <tb>
+                {% for employee in DeliveryEmployee %}
+                        <tr>
+                            <td>{{ employee.name }}</td>
+                            <td>{{ employee.salary }}</td>
+                            <td>{{ employee.bankAccount }}</td>
+                            <td>{{ employee.insuranceNumber }}</td>
+                           <td><a href="/employees/delivery/{{ employee.employeeId }}">View</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tb>
+                </thead>
+            </table>
+            {% else %}
+                There are no delivery employees.
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>
