@@ -22,7 +22,7 @@ public class ClientController {
     @Path("/clients/reports")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getClientsReport(@QueryParam("token") String token) {
-
+        /*
         try{
             if(!authService.isSales(token)){
                 return Response.status(Response.Status.FORBIDDEN).build();
@@ -32,7 +32,7 @@ public class ClientController {
             return Response.status(Response.Status.FORBIDDEN).entity(e.getMessage()).build();
         } catch (FailedToVerifyTokenException e) {
             return Response.serverError().build();
-        }
+        } */
 
         try {
             return Response.ok(clientService.getClientsReport()).build();
@@ -48,7 +48,7 @@ public class ClientController {
     @Path("/clients/projects/top")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getHighestValueClient(@QueryParam("token") String token) {
-
+        /*
         try{
             if(!authService.isSales(token)){
                 return Response.status(Response.Status.FORBIDDEN).build();
@@ -59,7 +59,7 @@ public class ClientController {
         } catch (FailedToVerifyTokenException e) {
             return Response.serverError().build();
         }
-
+            */
         try {
             return Response.ok(clientService.getHighestValueClient()).build();
         } catch (FailedToGetClientsException e) {
