@@ -31,19 +31,19 @@
             </div>
             <div class="form-group">
                 <label for="salary">Salary</label>
-                <input type="text" id="salary" name="salary" class="form-control" value="{{ salary }}" required>
+                <input type="number" id="salary" name="salary" class="form-control" value="{{ salary }}" required>
             </div>
             <div class="form-group">
-                <label for="bank-account-number">Bank account number</label>
-                <input type="text" id="bank-account-number" name="bank-account-number" class="form-control" value="{{ bankAccount }}" required>
+                <label for="bankAccount">Bank account number</label>
+                <input type="text" id="bankAccount" name="bankAccount" class="form-control" value="{{ bankAccount }}" required>
             </div>
             <div class="form-group">
-                <label for="national-insurance-number">National Insurance Nubmer</label>
-                <input type="text" id="national-insurance-number" name="national-insurance-number" class="form-control" value="{{ insuranceNumber }}" required>
+                <label for="insuranceNumber">National Insurance Nubmer</label>
+                <input type="text" id="insuranceNumber" name="insuranceNumber" class="form-control" value="{{ insuranceNumber }}" required>
             </div>
             <div class="form-group">
-                <label for="commission-rate">Commission Rate</label>
-                <input type="text" id="commission-rate" name="commission-rate" class="form-control" value="{{ commissionRate }}" required>
+                <label for="commissionRate">Commission Rate</label>
+                <input type="number" step=".01" id="commissionRate" name="commissionRate" class="form-control" value="{{ commissionRate }}" required>
             </div>
             <button type="submit" class="btn-primary">Create employee</button>
         </form>
