@@ -34,14 +34,14 @@ module.exports = function(app: Application) {
 
     })
 
-    app.post(('/add-sales-employee'), async (req: Request, res: Response) => {
+    app.post('/add-sales-employee', async (req: Request, res: Response) => {
         let data: SalesEmployee = req.body
         let id: Number
 
         try {
             id = await slSalesEmployeeService.createSalesEmployee(data)
 
-            res.redirect('/employees/sales/' + id)
+            res.redirect('/employees-sales/' + id)
         } catch (e) {
             console.error(e)
 
@@ -66,7 +66,7 @@ module.exports = function(app: Application) {
         try {
             id = await slSalesEmployeeService.updateSalesEmployee(data)
 
-            res.redirect('/employees/sales/' + id)
+            res.redirect('/employees-sales/' + id)
         } catch (e) {
             console.error(e)
 

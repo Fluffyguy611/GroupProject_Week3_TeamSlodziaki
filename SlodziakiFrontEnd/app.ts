@@ -31,7 +31,7 @@ app.use(express.json())
 
 app.use(express.urlencoded({ extended: true }))
 
-app.use(session({ secret: 'NOT HARDCODED SECRET', cookie: { maxAge: 60000 }}));
+app.use(session({ secret: 'NOT HARDCODED SECRET', cookie: { maxAge: 60000000 }}));
 
 declare module "express-session" {
     interface SessionData {
@@ -53,16 +53,10 @@ app.get('/', async (req: Request, res: Response) => {
 
 
 //require('./controller/authController')(app);
-// const authMiddleware = require('./middleware/auth')
-// app.use(authMiddleware);
 //const authMiddleware = require('./middleware/auth')
 //app.use(authMiddleware);
-// const authMiddleware = require('./middleware/auth')
-// app.use(authMiddleware);
 
 
-require('./controller/productController')(app);
-require('./controller/orderController')(app);
 require('./controller/slSalesEmployeeController')(app);
 require('./controller/sl-clientController')(app);
 require('./controller/sl-projectController')(app);

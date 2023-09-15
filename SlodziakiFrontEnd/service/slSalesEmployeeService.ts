@@ -22,9 +22,9 @@ module.exports.getSalesEmployeeById = async function( id: number ): Promise<Sale
     }
 }
 
-module.exports.createSalesEmployee = async function(SalesEmployee: SalesEmployee): Promise<number>{
+module.exports.createSalesEmployee = async function(salesEmployee: SalesEmployee): Promise<number>{
     try {
-        const response = await axios.post('http://localhost:8080/api/employees/sales/', SalesEmployee)
+        const response = await axios.post('http://localhost:8080/api/employees/sales', salesEmployee)
 
         return response.data
     } catch (e) {
