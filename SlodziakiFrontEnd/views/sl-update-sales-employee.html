@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Sales team HR Panel</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
+
 <body>
     <header class="bg-dark text-light">
         <div class="container">
@@ -24,27 +26,37 @@
                     {{ errormessage }}
                 </div>
                 {% endif %}
-                <form action="/update-sales-employee" method="post">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" class="form-control" value="{{ employee.name }}" required>
+                <form action="/update/sales/employee/{{employee.employeeId}}" method="post">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" class="form-control" value="{{ employee.name }}"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="salary">Salary</label>
+                        <input type="text" name="salary" class="form-control" value="{{ employee.salary }}"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="accountNumber">Bank account number</label>
+                        <input type="text" name="accountNumber" class="form-control"
+                            value="{{ employee.bankAccount }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nationalInsuranceNumber">National Insurance Number</label>
+                        <input type="text" name="nationalInsuranceNumber" class="form-control"
+                            value="{{ employee.nationalInsuranceNumber }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="commissionRate">Commission Rate</label>
+                        <input type="text" name="commissionRate" class="form-control"
+                            value="{{ employee.commissionRate }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update employee</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="salary">Salary</label>
-                <input type="text" id="salary" name="salary" class="form-control" value="{{ employee.salary }}" required>
-            </div>
-            <div class="form-group">
-                <label for="bank-account-number">Bank account number</label>
-                <input type="text" id="bank-account-number" name="bank-account-number" class="form-control" value="{{ employee.bankAccount }}" required>
-            </div>
-            <div class="form-group">
-                <label for="commission-rate">Commission Rate</label>
-                <input type="text" id="commission-rate" name="commission-rate" class="form-control" value="{{ employee.commissionRate }}" required>
-            </div>
-            <button type="submit" class="btn-primary">Update employee</button>
-        </form>
-        </div>
         </section>
     </main>
 </body>
+
 </html>

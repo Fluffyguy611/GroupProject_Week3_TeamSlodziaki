@@ -33,12 +33,11 @@ module.exports.createSalesEmployee = async function(salesEmployee: SalesEmployee
 
 }
 
-module.exports.updateSalesEmployee = async function( id: number ): Promise<SalesEmployee[]>{
+module.exports.updateSalesEmployee = async function( id: number, body: SalesEmployee ): Promise<void>{
     try {
-        const response = await axios.post('http://localhost:8080/api/employees/sales/' + id)
-
-        return response.data
+        await axios.put('http://localhost:8080/api/employees/sales/' + id, body)
     } catch (e) {
+        console.error(e)
         throw new Error('Could not update sales employee')
     }
 
@@ -46,7 +45,7 @@ module.exports.updateSalesEmployee = async function( id: number ): Promise<Sales
 
 module.exports.deleteSalesEmployee = async function( id: number ): Promise<void>{
     try {
-         await axios.delete('http://localhost:8080/api/employees/sales/' + id)
+        const response = await axios.delete('http://localhost:8080/api/employees/sales/' + id)
 
     } catch (e) {
         throw new Error('Could not delete sales employee')

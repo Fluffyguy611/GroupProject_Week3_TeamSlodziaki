@@ -53,11 +53,11 @@ public class SalesEmployeeRequest extends EmployeeRequest{
 
     @JsonCreator
     public SalesEmployeeRequest(
-            @JsonProperty("Name") String name,
-            @JsonProperty("Salary") int salary,
-            @JsonProperty("BankAccountNumber") String bankAccount,
-            @JsonProperty("NationalInsuranceNumber") String insuranceNumber,
-            @JsonProperty("CommissionRate") double commissionRate) {
+            @JsonProperty("name") String name,
+            @JsonProperty("salary") int salary,
+            @JsonProperty("accountNumber") String bankAccount,
+            @JsonProperty("nationalInsuranceNumber") String insuranceNumber,
+            @JsonProperty("commissionRate") double commissionRate) {
         super(name, salary, bankAccount, insuranceNumber);
         setCommissionRate(commissionRate);
     }
