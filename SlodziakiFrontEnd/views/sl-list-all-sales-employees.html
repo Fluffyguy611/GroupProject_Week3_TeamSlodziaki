@@ -16,7 +16,7 @@
         </div>
     </header>
     <main class="container mt-4">
-        <section id="employees-sales" class="mt-4">
+        <section id="employees/sales" class="mt-4">
             <h2>Sales employee list</h2>
             {% if SalesEmployee and SalesEmployee.length > 0 %}
             <table class="table">
@@ -36,7 +36,7 @@
                             <td>{{ employee.bankAccount }}</td>
                             <td>{{ employee.insuranceNumber }}</td>
                             <td>{{ employee.commissionRate }}</td>
-                            <td><a href="/employees-sales/{{ employee.employeeId }}">View</a></td>
+                            <td><a href="/employees/sales/{{ employee.employeeId }}">View</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

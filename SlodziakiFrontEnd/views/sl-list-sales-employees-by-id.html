@@ -22,20 +22,21 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Id</th>
                         <th scope="col">Name</th>
                         <th scope="col">Salary</th>
                         <th scope="col">Bank Account Number</th>
+                        <th scope="col">National Insurance Nubmer</th>
                         <th scope="col">Commission Rate</th>
                     </tr>
                     <tbody>
                         <tr>
-                            <td>{{ SalesEmployee.employeeId }}</td>
                             <td>{{ SalesEmployee.name }}</td>
                             <td>{{ SalesEmployee.salary }}</td>
                             <td>{{ SalesEmployee.bankAccount }}</td>
+                            <td>{{ SalesEmployee.insuranceNumber }}</td>
                             <td>{{ SalesEmployee.commissionRate }}</td>
-                            <td><a href="/sl-delete-sales-employee/{{ SalesEmployee.employeeId }}">Delete</a></td>
+                            <td><a href="/sl/delete/sales/employee/{{ SalesEmployee.employeeId }}">Delete</a></td>
+                            <td><a href="/update/sales/employee/{{ SalesEmployee.employeeId }}">Update</a></td>
                         </tr>
                     </tbody>
                 </thead>
