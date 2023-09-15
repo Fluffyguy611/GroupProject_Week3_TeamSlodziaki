@@ -4,7 +4,7 @@ const axios = require('axios');
 
 module.exports.getClientsReport = async function(token:string): Promise<Client> {
     try{
-        const response = await axios.get('http://localhost:8080/api/clients/reports', {params: {token: token}})
+        const response = await axios.get(`http://localhost:8080/api/clients/reports?token=${token}`)
 
         return response.data
     } catch (e) {
@@ -15,7 +15,7 @@ module.exports.getClientsReport = async function(token:string): Promise<Client> 
 
 module.exports.getClientHighestValue = async function(token: string): Promise<Client> {
     try{
-        const response = await axios.get('http://localhost:8080/api/clients/projects/top', {params: {token: token}})
+        const response = await axios.get(`http://localhost:8080/api/clients/projects/top?token=${token}`)
 
         return response.data
     } catch (e) {
@@ -26,7 +26,7 @@ module.exports.getClientHighestValue = async function(token: string): Promise<Cl
 
 module.exports.getClients = async function(token: string): Promise<Client> {
     try{
-        const response = await axios.get('http://localhost:8080/api/clients', {params: {token: token}})
+        const response = await axios.get(`http://localhost:8080/api/clients?token=${token}`)
 
         return response.data
     } catch (e) {

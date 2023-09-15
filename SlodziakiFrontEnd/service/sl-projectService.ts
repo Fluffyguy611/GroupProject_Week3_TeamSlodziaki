@@ -26,7 +26,7 @@ module.exports.getProjectById = async function( id: number , token:string): Prom
 
 module.exports.setProjectAsCompleted = async function (id : number, token:string) {
     try{
-        await axios.put(`http://localhost:8080/api/project/${id}`, {params: {token: token}});
+        await axios.put(`http://localhost:8080/api/project/${id}?token=${token}`);
     } catch (e){
         throw new Error('Could not update project')
     }
