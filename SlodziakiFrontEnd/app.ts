@@ -52,7 +52,7 @@ app.get('/', async (req: Request, res: Response) => {
 })
 
 
-//require('./controller/authController')(app);
+require('./controller/authController')(app);
 //const authMiddleware = require('./middleware/auth')
 //app.use(authMiddleware);
 
