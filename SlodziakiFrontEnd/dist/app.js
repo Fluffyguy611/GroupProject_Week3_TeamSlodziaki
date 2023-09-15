@@ -62,9 +62,18 @@ app.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, func
         return [2 /*return*/];
     });
 }); });
+<<<<<<< HEAD
+require('./controller/authController')(app);
+// const authMiddleware = require('./middleware/auth')
+// app.use(authMiddleware);
+require('./controller/productController')(app);
+require('./controller/orderController')(app);
+require('./controller/slSalesEmployeeController')(app);
+=======
 //require('./controller/authController')(app);
 require('./controller/productController')(app);
 require('./controller/orderController')(app);
 require('./controller/sl-clientController')(app);
 require('./controller/sl-projectController')(app);
+>>>>>>> 12275c50ef0a8962ac5a799db060e3337515040b
 //# sourceMappingURL=app.js.map
