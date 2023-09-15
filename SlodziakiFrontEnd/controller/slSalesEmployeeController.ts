@@ -41,7 +41,7 @@ module.exports = function (app: Application) {
         try {
             id = await slSalesEmployeeService.createSalesEmployee(data)
 
-            res.redirect('/employees-sales/' + id)
+            res.redirect('/employees/sales/' + id)
         } catch (e) {
             console.error(e)
 
