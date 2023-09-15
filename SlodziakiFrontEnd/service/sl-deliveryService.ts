@@ -15,15 +15,6 @@ module.exports.createDeliveryEmployee = async function (DeliveryEmployee: Delive
 }
 
 
-// module.exports.updateDeliveryEmployeeById = async function( id: number ): Promise<DeliveryEmployees> {
-//     try{
-//         const response = await axios.put(`http://localhost:8080/api/employees/delivery/${id}`);
-
-//         return response.data
-//     } catch (e) {
-//         throw new Error('Could not update delivery employee by id')
-//     }
-// }
 
 
 module.exports.getDeliveryEmployeeById = async function( id: number ): Promise<DeliveryEmployees> {
@@ -45,6 +36,18 @@ module.exports.getAllDeliveryEmployees = async function (): Promise<DeliveryEmpl
         return response.data
     } catch (e) {
         throw new Error('Could not get delivery employees')
+    }
+}
+
+
+
+module.exports.updateDeliveryEmployeeById = async function( id: number ): Promise<DeliveryEmployees> {
+    try{
+        const response = await axios.put(`http://localhost:8080/api/employees/delivery/${id}`);
+
+        return response.data
+    } catch (e) {
+        throw new Error('Could not update delivery employee by id')
     }
 }
 
