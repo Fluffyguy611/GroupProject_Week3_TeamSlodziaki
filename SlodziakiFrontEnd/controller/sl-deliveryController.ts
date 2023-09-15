@@ -28,23 +28,37 @@ module.exports=function(app: Application) {
     })
 
 
-// app.put('/employees/delivery/:id', async (req, res) => {
-//     let id = req.params.id;
-//     let data = req.body;
+    app.get('/employees/delivery/update/:id', async (req: Request, rest: Response) => {
+        let data = [];
 
-//     try {
-//         await deliveryService.updateDeliveryEmployeeById(id, data);
-//         res.redirect('/deliveryEmployee/' + id);
-//     } catch (e) {
-//         console.error(e);
-//         res.locals.errormessage = e.message;
-//         res.render('update-delivery-employee', { id, ...data }); 
-//     }
-// });
+        try {
+            data = await deliveryService.getDeliveryEmployeeById(req.params.id);
+        } catch (e){
+            console.error(e);
+        }
+    
+        rest.render('sl-update-delivery-employee', { DeliveryEmployee: data })
+    })
 
-////////
+    
 
-app.get('/employees/delivery', async (req: Request, res: Response) => { //localhost3000
+app.post('/employees/delivery/update/:id', async (req: Request, res: Response) => {
+    let id= req.params.id ;
+    let data: DeliveryEmployees = req.body;
+
+    try {
+        await deliveryService.updateDeliveryEmployeeById(id);
+        res.redirect('/deliveryEmployee/' + id);
+    } catch (e) {
+        console.error(e);
+        res.locals.errormessage = e.message;
+        res.render('update-delivery-employee', {DeliveryEmployee: data}); 
+    }
+});
+
+
+
+app.get('/employees/delivery', async (req: Request, res: Response) => { 
     let data = [];
 
     try {
@@ -57,7 +71,7 @@ app.get('/employees/delivery', async (req: Request, res: Response) => { //localh
 })
 
 
-//////
+
 
 app.get('/employees/delivery/:id', async (req: Request, res: Response) => {
     let data = [];
