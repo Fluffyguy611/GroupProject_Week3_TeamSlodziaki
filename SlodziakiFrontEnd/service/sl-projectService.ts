@@ -4,7 +4,7 @@ const axios = require('axios');
 
 module.exports.getProjectReport = async function(token: string): Promise<Project> {
     try{
-        const response = await axios.get('http://localhost:8080/api/projects/reports', {params: {token: token}})
+        const response = await axios.get(`http://localhost:8080/api/projects/reports?token=${token}`);
 
         return response.data
     } catch (e) {
@@ -26,7 +26,7 @@ module.exports.getProjectById = async function( id: number , token:string): Prom
 
 module.exports.setProjectAsCompleted = async function (id : number, token:string) {
     try{
-        await axios.put(`http://localhost:8080/api/project/${id}`, {params: {token: token}});
+        await axios.put(`http://localhost:8080/api/project/${id}?token=${token}`);
     } catch (e){
         throw new Error('Could not update project')
     }

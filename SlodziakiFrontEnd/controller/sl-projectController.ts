@@ -12,7 +12,7 @@ module.exports = function(app: Application) {
         let data = [];
 
         try {
-            data = await projectService.getProjectReport(req.params.token, req.session.token)
+            data = await projectService.getProjectReport(req.session.token)
         } catch (e){
             console.error(e)
         }
@@ -48,16 +48,17 @@ module.exports = function(app: Application) {
     app.post('/projects/:id/setCompleted', async (req: Request, res: Response) => {
         let data: Project = req.body
         try {
-            await projectService.setProjectAsCompleted(req.params.id, req.params.token)
+            await projectService.setProjectAsCompleted(req.params.id, req.session.token)
 
             res.redirect('/projects/reports')
         } catch (e){
             console.error(e);
-
+            
+            data = await projectService.getProjectById(req.params.id, req.session.token)
             
             res.locals.errormessage = e.message
 
-            res.render('sl-view-project-completed', { project: data })
+            res.redirect('/projects/reports')
         }
     })
 
@@ -80,7 +81,7 @@ module.exports = function(app: Application) {
         try {
             await projectService.assignClientToProject(req.params.project_id, data, req.session.token)
 
-            res.redirect('/projects/reports')
+            res.redirect('/projects/' + req.params.project_id)
         } catch (e){
             console.error(e);
 

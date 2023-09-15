@@ -41,7 +41,7 @@ module.exports = function (app: Application) {
         try {
             id = await slSalesEmployeeService.createSalesEmployee(data)
 
-            res.redirect('/employees/sales/' + id)
+            res.redirect('/employees-sales/' + id)
         } catch (e) {
             console.error(e)
 
@@ -72,8 +72,8 @@ module.exports = function (app: Application) {
     });
 
     app.post('/add/sales/employee/description', async (req: Request, res: Response) => {
-        req.session.salesEmployee["bankAccountNumber"] = req.body.bankAccountNumber
-        req.session.salesEmployee["nationalInsuranceNumber"] = req.body.nationalInsuranceNumber
+        req.session.salesEmployee["bankAccount"] = req.body.bankAccountNumber
+        req.session.salesEmployee["insuranceNumber"] = req.body.nationalInsuranceNumber
         req.session.salesEmployee["commissionRate"] = req.body.commissionRate
 
     });
@@ -92,7 +92,7 @@ module.exports = function (app: Application) {
         try {
             await slSalesEmployeeService.updateSalesEmployee(id, data);
 
-            res.redirect('/employees/sales/' + id);
+            res.redirect('/employees-sales/' + id)
         } catch (e) {
             console.error(e)
 

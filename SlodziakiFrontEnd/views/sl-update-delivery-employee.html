@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update delivery employee</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <header class="bg-dark text-light">
+        <div class="container">
+            <di class="row">
+                <div class="col-md-12">
+                    <h1>Update delivery employee</h1>
+                </div>
+            </di>
+        </div>
+    </header>
+
+    <main class="container mt-4">
+        <section id="form" class="lg-light py-5">
+            <div class="container">
+                <p>Update delivery employee details</p>
+                <form action="/employees/delivery/upadate/:id" method="post">
+                    <div class = "form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" value="{{ DeliveryEmployee.name}}" class="from-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="salary">Salary:</label>
+                        <input type="number" id="salary" name="salary" value="{{ DeliveryEmployee.salary }}" class="from-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bankAccount">Bank account:</label>
+                        <input type="text" id="bankAccount" name="bankAccount" value="{{ DeliveryEmployee.bankAccount }}" class="from-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="insuranceNumber">Insurance number:</label>
+                        <input type="text" id="insuranceNumber" name="insuranceNumber" value="{{ DeliveryEmployee.insuranceNumber }}" class="from-control" required>
+                    </div>
+                    <button type="submit" class="btn-primary" value="update" >Update</button>
+                </form> 
+            </div>
+        </section>
+  
+    </main>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

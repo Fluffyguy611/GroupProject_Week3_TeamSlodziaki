@@ -52,7 +52,7 @@ app.set('view engine', 'html');
 app.use('/public', express.static(path.join(__dirname, '/public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(session({ secret: 'NOT HARDCODED SECRET', cookie: { maxAge: 60000 } }));
+app.use(session({ secret: 'NOT HARDCODED SECRET', cookie: { maxAge: 60000000 } }));
 app.listen(3000, function () {
     console.log('Server listening on port 3000');
 });
@@ -62,6 +62,7 @@ app.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, func
         return [2 /*return*/];
     });
 }); });
+<<<<<<< HEAD
 //require('./controller/authController')(app);
 // const authMiddleware = require('./middleware/auth')
 // app.use(authMiddleware);
@@ -71,6 +72,11 @@ app.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, func
 // app.use(authMiddleware);
 require('./controller/productController')(app);
 require('./controller/orderController')(app);
+=======
+require('./controller/authController')(app);
+//const authMiddleware = require('./middleware/auth')
+//app.use(authMiddleware);
+>>>>>>> 1c83e37ac245d107dc3e7da54112a26c1f9dbb6d
 require('./controller/slSalesEmployeeController')(app);
 require('./controller/sl-clientController')(app);
 require('./controller/sl-projectController')(app);
