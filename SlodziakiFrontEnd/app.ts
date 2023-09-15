@@ -1,8 +1,10 @@
 import { Request, Response } from "express"
-import { Product } from './model/product';
-import { Order } from './model/order';
 import { Login } from './model/auth';
 import { SalesEmployee } from "./model/slSalesEmployee";
+import { Client } from './model/sl-client';
+import { Project } from './model/sl-project';
+import { DeliveryEmployees } from "./model/sl-delivery";
+
 
 const express = require('express')
 const app = express()
@@ -34,9 +36,10 @@ app.use(session({ secret: 'NOT HARDCODED SECRET', cookie: { maxAge: 60000 }}));
 declare module "express-session" {
     interface SessionData {
         token: string
-        product: Product;
-        order: Order;
+        client: Client
+        project: Project
         salesEmployee: SalesEmployee;
+        deliveryEmployee: DeliveryEmployees;
     }
 }
 
@@ -48,15 +51,20 @@ app.get('/', async (req: Request, res: Response) => {
     res.render('pizza', { title: 'New Pizza Time!' })
 })
 
-require('./controller/authController')(app);
 
+//require('./controller/authController')(app);
+// const authMiddleware = require('./middleware/auth')
+// app.use(authMiddleware);
+//const authMiddleware = require('./middleware/auth')
+//app.use(authMiddleware);
 // const authMiddleware = require('./middleware/auth')
 // app.use(authMiddleware);
 
 
-
 require('./controller/productController')(app);
-
 require('./controller/orderController')(app);
-
 require('./controller/slSalesEmployeeController')(app);
+require('./controller/sl-clientController')(app);
+require('./controller/sl-projectController')(app);
+require('./controller/sl-deliveryController')(app);
+

@@ -27,7 +27,7 @@ public class ProjectService {
             FailedToUpdateProjectException {
         try {
             Project projectToUpdate = projectDao.getProjectById(projectId);
-            Client clientToCheck = clientDao.getClientById(client.getId());
+            Client clientToCheck = clientDao.getClientById(client.getClientId());
 
             if (projectToUpdate == null) {
                 throw new ProjectDoesNotExistsException();
@@ -37,7 +37,7 @@ public class ProjectService {
                 throw new ClientDoesNotExistException();
             }
 
-            projectDao.assignClientToProject(projectId, client.getId());
+            projectDao.assignClientToProject(projectId, client.getClientId());
         } catch (SQLException e) {
             System.err.println(e.getMessage());
 
@@ -129,6 +129,22 @@ public class ProjectService {
         }
 
 
+    }
+
+    public ProjectRequestDetails getProjectById(int id) throws FailedToGetProjectException, ProjectDoesNotExistsException{
+        try {
+            ProjectRequestDetails project = projectDao.getProjectDetailsById(id);
+
+            if(project == null){
+                throw new ProjectDoesNotExistsException();
+            }
+
+            return project;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+
+            throw new FailedToGetProjectException();
+        }
     }
 
 }

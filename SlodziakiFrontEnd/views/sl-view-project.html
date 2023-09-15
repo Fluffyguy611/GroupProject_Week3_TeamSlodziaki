@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{ Project.name }}</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container mt-4">
+        <section id="project" class="mt-4">
+           {% if project %}
+           <h4>Project Name</h4>
+           {{ project.name }}
+           <h4>Value</h4>
+           {{ project.value }}
+           <h4>Client Name</h4>
+           {{ project.clientName }}
+           <h4>Tech Lead Name</h4>
+           {{ project.techLeadName }}
+           <h4>is project completed?</h4>
+           {{ project.completed }}
+
+           <p></p>
+
+           <p><a href="/projects/{{project.projectId}}/setCompleted">Set Project As Completed</a></p>
+           <p><a href="/projects/{{project.projectId}}/clients">Assign Client to a Project</a></p>
+           {% else %}
+                Could not find project.
+           {% endif %}
+        </section>
+    </main>
+</body>
+</html>
