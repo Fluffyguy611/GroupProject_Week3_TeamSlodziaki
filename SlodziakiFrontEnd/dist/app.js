@@ -63,8 +63,6 @@ app.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, func
     });
 }); });
 //require('./controller/authController')(app);
-//const authMiddleware = require('./middleware/auth')
-//app.use(authMiddleware);
 require('./controller/productController')(app);
 require('./controller/orderController')(app);
 require('./controller/sl-clientController')(app);
