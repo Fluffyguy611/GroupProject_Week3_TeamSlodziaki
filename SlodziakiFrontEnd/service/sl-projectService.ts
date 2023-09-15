@@ -4,7 +4,7 @@ const axios = require('axios');
 
 module.exports.getProjectReport = async function(token: string): Promise<Project> {
     try{
-        const response = await axios.get('http://localhost:8080/api/projects/reports', {params: {token: token}})
+        const response = await axios.get(`http://localhost:8080/api/projects/reports?token=${token}`);
 
         return response.data
     } catch (e) {

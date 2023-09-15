@@ -23,7 +23,9 @@
            <form action="/projects/{{project.projectId}}/setCompleted" method="post">
                 <p>Are you sure you want to set the project as completed?</p>
                <p></p>
-            <button type="submit" class="btn-primary">YES</button>
+               <input type="radio" id="completed" name="completed" value="true" checked required/>
+               <option value="true">yes</option>
+            <button type="submit" class="btn-primary">CONFIRM</button>
         </form>
         <form action="/projects/{{project.projectId}}" method="get">
             <p></p>
