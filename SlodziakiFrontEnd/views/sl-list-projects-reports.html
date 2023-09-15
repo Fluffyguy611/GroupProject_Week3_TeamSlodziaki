@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Reports</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Project Reports</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container mt-4">
+        <section id="projects" class="mt-4">
+            <h2>Project Reports</h2>
+            {% if projects and projects.length > 0 %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Edit Project</th>
+                        <th scope="col">Project Name</th>
+                        <th scope="col">Project Tech Lead</th>
+                        <th scope="col">Delivery Employees working on the project</th>
+                    </tr>
+                    <tbody>
+                {% for project in projects %}
+                        <tr>
+                            <td><a href="/projects/{{project.id}}">Edit</a></td>
+                            <td>{{ project.projectName }}</td>
+                            <td>{{ project.techLeadName }}</td>
+                            <td>{% for deliveryEmployee in project.deliveryEmployee %}
+                                    {{ deliveryEmployee.name }},
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </thead>
+            </table>
+            {% else %}
+                There are no orders.
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

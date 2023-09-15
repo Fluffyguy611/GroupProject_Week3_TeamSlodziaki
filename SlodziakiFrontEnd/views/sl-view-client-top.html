@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{ client.name }} is the client with the highest value</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container mt-4">
+        <section id="client" class="mt-4">
+           {% if client %}
+           <h4>Client Name</h4>
+           {{ client.name }}
+           <h4>Client Value</h4>
+           {{ client.value }}
+           {% else %}
+                Could not find client.
+           {% endif %}
+        </section>
+    </main>
+</body>
+</html>

@@ -3,8 +3,10 @@ package org.kainos.ea.api;
 import org.kainos.ea.cli.Client;
 import org.kainos.ea.cli.ClientHighestValue;
 import org.kainos.ea.cli.ClientsReport;
+import org.kainos.ea.cli.SalesEmployee;
 import org.kainos.ea.client.ClientDoesNotExistException;
 import org.kainos.ea.client.FailedToGetClientsException;
+import org.kainos.ea.client.FailedToGetSalesEmployeesException;
 import org.kainos.ea.db.ClientDao;
 
 import java.sql.SQLException;
@@ -68,5 +70,6 @@ public class ClientService {
             throw new FailedToGetClientsException();
         }
     }
+
 
 }

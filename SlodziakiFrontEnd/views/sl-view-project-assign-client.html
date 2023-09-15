@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Client</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <header class="bg-dark text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>add Client</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container mt-4">
+        <section id="form" class="lg-light py-5">
+            <div class="container">
+                <p>Enter Client to be assigned to project: {{projects.name}}</p>
+                {% if errormessage %}
+                <div class="alert alert-danger" role="alert">
+                    {{ errormessage }}
+                </div>
+                {% endif %}
+                <form action="/projects/{{projects.projectId}}/clients" method="post">
+                    <div class="form-group">
+                        <label for="clientId">Select the client:</label>
+                        <select name="clientId">
+                            {% for client in clients %}
+                            <option value="{{ client.clientId }}">{{ client.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Submit</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
